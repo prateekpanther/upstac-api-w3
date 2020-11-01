@@ -102,7 +102,7 @@ public class ConsultationController {
     @PutMapping("/update/{id}")
     public TestRequest updateConsultation(@PathVariable Long id,@RequestBody CreateConsultationRequest testResult) {
         // Implement this method to update the result of the current test request id with test doctor comments
-        // Create an object of the User class to get the logged in user
+        // Create prateek an object of the User class to get the logged in user
         // Create an object of TestResult class and make use of updateConsultation() method from testRequestUpdateService class
         //to update the current test request id with the testResult details by the current user(object created)
 
