@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-//prateek code
+//prateek testing git functionality code
 @Getter
 @Setter
 public class LabResult {
