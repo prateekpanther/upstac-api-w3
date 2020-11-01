@@ -30,9 +30,8 @@ public class ConsultationService {
         Consultation consult=new Consultation();
         consult.setDoctor(doctor);
         consult.setRequest(testRequest);
-        return consultationRepository.save(consult);
-//        return null; // replace this line with your code
 
+        return consultationRepository.save(consult);
 
     }
 
@@ -41,15 +40,13 @@ public class ConsultationService {
         // create an object of Consultation and make use of setters to set Suggestion, Comments, and UpdatedOn values
         // make use of save() method of consultationRepository to return the Consultation object
 
-        //Consultation consult=new Consultation();
         Consultation consult=consultationRepository.findByRequest(testRequest).get();
         consult.setSuggestion(createConsultationRequest.getSuggestion());
         consult.setComments(createConsultationRequest.getComments());
         consult.setUpdatedOn(LocalDate.now());
         consult.setRequest(testRequest);
-        return consultationRepository.save(consult);
-        //return null; // replace this line with your code
 
+        return consultationRepository.save(consult);
 
     }
 

@@ -31,8 +31,6 @@ public class LabRequestController {
     Logger log = LoggerFactory.getLogger(LabRequestController.class);
 
 
-
-
     @Autowired
     private TestRequestUpdateService testRequestUpdateService;
 
@@ -40,7 +38,6 @@ public class LabRequestController {
     private TestRequestQueryService testRequestQueryService;
     @Autowired
     private TestRequestFlowService testRequestFlowService;
-
 
 
     @Autowired
@@ -57,9 +54,6 @@ public class LabRequestController {
         // For reference check the method requestHistory() method from TestRequestController class
 
         User user=userLoggedInService.getLoggedInUser();
-
-        //    return null; // replace this line with your code
-        //prateek
         return testRequestQueryService.findBy(RequestStatus.INITIATED);
 
     }
@@ -73,11 +67,8 @@ public class LabRequestController {
         //Make use of the findByTester() method from testRequestQueryService class to get the list
         // For reference check the method getPendingTests() method from TestRequestController class
 
-       // return null; // replace this line with your code
-        //prateek
-
         User user=userLoggedInService.getLoggedInUser();
-         return testRequestQueryService.findByTester(user);
+        return testRequestQueryService.findByTester(user);
 
     }
 
@@ -95,15 +86,10 @@ public class LabRequestController {
 
 
         try {
-//prateek
             User user=userLoggedInService.getLoggedInUser();
             TestRequest result=testRequestUpdateService.assignForLabTest(id,user);
             return result;
-//prateek commented            return null; // replace this line of code with your implementation
-
-
         }catch (AppException e) {
-  //prateek commented          throw asBadRequest(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -117,17 +103,14 @@ public class LabRequestController {
         // Create an object of TestResult class and make use of updateLabTest() method from testRequestUpdateService class
         //to update the current test request id with the createLabResult details by the current user(object created)
         try {
-//prateek code
             User user=userLoggedInService.getLoggedInUser();
             TestRequest result=testRequestUpdateService.updateLabTest(id,createLabResult,user);
             return result;
- //           return null; // replace this line of code with your implementation
-
         } catch (ConstraintViolationException e) {
             throw asConstraintViolation(e);
         }catch (AppException e) {
-            throw asBadRequest(e.getMessage());
-        }
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+       }
     }
 
 

@@ -13,6 +13,13 @@ public class CreateLabResult {
     @NotNull
     private String heartBeat;
 
+    @NotNull
+    private String temperature;
+    private String oxygenLevel;
+    private String comments;
+    @NotNull
+    private TestStatus result;
+
     public String getBloodPressure() {
         return bloodPressure;
     }
@@ -61,10 +68,4 @@ public class CreateLabResult {
         this.result = result;
     }
 
-    @NotNull
-    private String temperature;
-    private String oxygenLevel;
-    private String comments;
-    @NotNull
-    private TestStatus result;
 }

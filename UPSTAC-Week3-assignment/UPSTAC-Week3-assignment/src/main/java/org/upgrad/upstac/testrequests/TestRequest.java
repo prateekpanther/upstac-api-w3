@@ -30,6 +30,15 @@ public class TestRequest {
     private Gender gender;
     private String address;
     private Integer age;
+    private String email;
+    private String phoneNumber;
+    private Integer pinCode;
+
+    @OneToOne(mappedBy="request")
+    Consultation consultation;
+
+    @OneToOne(mappedBy="request")
+    LabResult labResult;
 
     public Long getRequestId() {
         return requestId;
@@ -135,14 +144,6 @@ public class TestRequest {
         this.labResult = labResult;
     }
 
-    private String email;
-    private String phoneNumber;
-    private Integer pinCode;
 
-    @OneToOne(mappedBy="request")
-    Consultation consultation;
-
-    @OneToOne(mappedBy="request")
-    LabResult labResult;
 
 }

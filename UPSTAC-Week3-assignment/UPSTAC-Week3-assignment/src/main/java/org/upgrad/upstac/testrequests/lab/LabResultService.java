@@ -30,14 +30,11 @@ public class LabResultService {
         // and testRequest details
         // make use of saveLabResult() method to return the LabResult object
 
-        LabResult lr= new LabResult();
-        lr.setTester(tester);
-       // lr.setTemperature("200");
-        lr.setRequest(testRequest);
-  //      return labResultRepository.save(lr);
-        return saveLabResult(lr);
+        LabResult labResult= new LabResult();
+        labResult.setTester(tester);
+        labResult.setRequest(testRequest);
 
-  //prateek      return null; // replace this line with your code
+        return saveLabResult(labResult);
     }
 
     @Transactional
@@ -50,8 +47,6 @@ public class LabResultService {
     public LabResult assignForLabTest(TestRequest testRequest, User tester) {
 
         return createLabResult(tester, testRequest);
-
-
     }
 
 
@@ -61,28 +56,20 @@ public class LabResultService {
         // create an object of LabResult and make use of setters to set Blood Pressure, Comments,
         // HeartBeat, OxygenLevel, Temperature, Result and UpdatedOn values
         // make use of the saveLabResult() method to return the object of LabResult
-        LabResult lr1 = labResultRepository.findByRequest(testRequest).get();
-       // LabResult lr1=new LabResult();
-        lr1.setBloodPressure(createLabResult.getBloodPressure());
-        lr1.setComments(createLabResult.getComments());
-        lr1.setHeartBeat(createLabResult.getHeartBeat());
-        lr1.setOxygenLevel(createLabResult.getOxygenLevel());
-        lr1.setTemperature(createLabResult.getTemperature());
-        lr1.setResult(createLabResult.getResult());
-        lr1.setUpdatedOn(LocalDate.now());
-        lr1.setRequest(testRequest);
-        lr1.setResult(createLabResult.getResult());
 
-  //      return labResultRepository.save(lr);
-        return saveLabResult(lr1);
+        LabResult labResult = labResultRepository.findByRequest(testRequest).get();
 
+        labResult.setBloodPressure(createLabResult.getBloodPressure());
+        labResult.setComments(createLabResult.getComments());
+        labResult.setHeartBeat(createLabResult.getHeartBeat());
+        labResult.setOxygenLevel(createLabResult.getOxygenLevel());
+        labResult.setTemperature(createLabResult.getTemperature());
+        labResult.setResult(createLabResult.getResult());
+        labResult.setUpdatedOn(LocalDate.now());
+        labResult.setRequest(testRequest);
+        labResult.setResult(createLabResult.getResult());
 
-
-
-     //prateek   return null; // replace this line with your code
-
+        return saveLabResult(labResult);
 
     }
-
-
 }

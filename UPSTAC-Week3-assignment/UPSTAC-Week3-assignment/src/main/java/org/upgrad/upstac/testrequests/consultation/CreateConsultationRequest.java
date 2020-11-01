@@ -10,6 +10,8 @@ public class CreateConsultationRequest {
     @NotNull
     private DoctorSuggestion suggestion;
 
+    private String comments;
+
     public DoctorSuggestion getSuggestion() {
         return suggestion;
     }
@@ -26,5 +28,5 @@ public class CreateConsultationRequest {
         this.comments = comments;
     }
 
-    private String comments;
+
 }

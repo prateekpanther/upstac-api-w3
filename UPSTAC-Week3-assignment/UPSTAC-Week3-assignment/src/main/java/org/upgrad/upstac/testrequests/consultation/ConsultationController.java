@@ -56,11 +56,7 @@ public class ConsultationController {
         //return the result
         // For reference check the method requestHistory() method from TestRequestController class
 
-        //prateek
-
         return testRequestQueryService.findBy(RequestStatus.LAB_TEST_COMPLETED);
-   //     return null; // replace this line with your code
-
     }
 
     @GetMapping
@@ -71,15 +67,11 @@ public class ConsultationController {
         //Implement this method to return the list of test requests assigned to current doctor(make use of the above created User object)
         //Make use of the findByDoctor() method from testRequestQueryService class to get the list
         // For reference check the method getPendingTests() method from TestRequestController class
-//prateek
 
         User user=userLoggedInService.getLoggedInUser();
         return testRequestQueryService.findByDoctor(user);
- //       return null; // replace this line with your code
 
-
-
-    }
+     }
 
 
 
@@ -91,14 +83,15 @@ public class ConsultationController {
         //Create an object of TestRequest class and use the assignForConsultation() method of testRequestUpdateService to assign the particular id to the current user
         // return the above created object
         // Refer to the method createRequest() from the TestRequestController class
+
         try {
             User user=userLoggedInService.getLoggedInUser();
             TestRequest result=testRequestUpdateService.assignForConsultation(id,user);
+
             return result;
 
- //prateek           return null; // replace this line of code with your implementation
         }catch (AppException e) {
-    //prateek        throw asBadRequest(e.getMessage());
+
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -117,14 +110,16 @@ public class ConsultationController {
 
             User user=userLoggedInService.getLoggedInUser();
             TestRequest result=testRequestUpdateService.updateConsultation(id,testResult,user);
+
             return result;
 
- //prateek           return null; // replace this line of code with your implementation
-
         } catch (ConstraintViolationException e) {
+
             throw asConstraintViolation(e);
+
         }catch (AppException e) {
-            throw asBadRequest(e.getMessage());
+
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 
